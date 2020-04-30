@@ -24,25 +24,20 @@ public:
     void initialize(CaptureMode pMode);
 private:
     HRESULT hr;
-    ICreateDevEnum* mCreateDevEnum = nullptr;
-    IEnumMoniker* mEnumMoniker = nullptr;
-    IGraphBuilder* mGraph = nullptr;
-    IMoniker* mMoniker = nullptr;
-    IBaseFilter* mVideoCaptureFilter = nullptr;
-    IBaseFilter *mGrabberFilter = nullptr;
-    IBaseFilter *mNullRenderer = nullptr;
-    IVideoWindow* mVideoWindow = nullptr;
-    IMediaControl* mMediaControl = nullptr;
-    IMediaEvent* mMediaEvent = nullptr;
-    IMediaEventEx* mMediaEventEx = nullptr;
-    ICaptureGraphBuilder2* mBuilder = nullptr;
-
-    ULONG nFetched = 0;
-
-    ISampleGrabber* mGrabber = nullptr;
-    SampleGrabberCallback* mSampleGrabberCallbackClass = nullptr;
-
-    CaptureMode mMode = CaptureMode::ONLY_DISPLAY;
+    ICreateDevEnum* mCreateDevEnum;
+    IEnumMoniker* mEnumMoniker;
+    IGraphBuilder* mGraph;
+    IMoniker* mMoniker;
+    IBaseFilter* mVideoCaptureFilter;
+    IBaseFilter *mGrabberFilter;
+    IVideoWindow* mVideoWindow;
+    IMediaControl* mMediaControl;
+    IMediaEvent* mMediaEvent;
+    ICaptureGraphBuilder2* mBuilder;
+    ISampleGrabber* mGrabber;
+    SampleGrabberCallback* mSampleGrabberCallbackClass;
+    ULONG nFetched;
+    CaptureMode mMode;
 };
 
 #endif // DIRECTSHOWCAMERACAPTURE_H

@@ -1,6 +1,20 @@
 #include "directshowcameracapture.h"
 
-DirectShowCameraCapture::DirectShowCameraCapture()
+DirectShowCameraCapture::DirectShowCameraCapture() :
+    mMode(CaptureMode::ONLY_DISPLAY),
+    mGraph(NULL),
+    mMoniker(nullptr),
+    mVideoCaptureFilter(nullptr),
+    mGrabberFilter(nullptr),
+    mVideoWindow(nullptr),
+    mMediaControl(nullptr),
+    mMediaEvent(nullptr),
+    mBuilder(nullptr),
+    mGrabber(nullptr),
+    mSampleGrabberCallbackClass(nullptr),
+    nFetched(0),
+    mEnumMoniker(nullptr),
+    mCreateDevEnum(nullptr)
 {
 
 }
@@ -71,11 +85,11 @@ void DirectShowCameraCapture::initialize(CaptureMode pMode)
     // Attach the graph control
     hr = mGraph->QueryInterface(IID_IMediaControl, (void **)&mMediaControl);
     // Attach the graph events
-    hr = mGraph->QueryInterface(IID_IMediaEvent, (void **)&mMediaEventEx);
+    hr = mGraph->QueryInterface(IID_IMediaEvent, (void **)&mMediaEvent);
     // Attach the graph window
     hr = mGraph->QueryInterface(IID_IVideoWindow, (void**)&mVideoWindow);
 
-    mVideoCaptureFilter->Release();
+    mVideoCaptureFilter->Release();   
 
     if(mVideoWindow)
         mVideoWindow->SetWindowPosition(0,0,640,480);
