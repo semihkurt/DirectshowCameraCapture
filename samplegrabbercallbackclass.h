@@ -11,6 +11,7 @@ class SampleGrabberCallbackClass : public ISampleGrabberCB
 {
 //    Q_DISABLE_COPY(SampleGrabberCallbackPrivate)
 public:
+    SampleGrabberCallbackClass();
     virtual ~SampleGrabberCallbackClass(){}
     explicit SampleGrabberCallbackClass(DirectShowSampleGrabber *grabber);
 
@@ -26,28 +27,5 @@ private:
     ULONG m_ref;
     DirectShowSampleGrabber *m_grabber;
 };
-
-class HSampleGrabber :
-        public ISampleGrabberCB
-{
-    // ISampleGrabberCB interface
-public:
-    HSampleGrabber(){}
-    HRESULT SampleCB(double SampleTime, IMediaSample *pSample){
-        cout << "Sample time: " << std::to_string(SampleTime) << endl;
-        return 1;
-    }
-    HRESULT BufferCB(double SampleTime, BYTE *pBuffer, long BufferLen){
-        cout << "Buffer Length: " << std::to_string(BufferLen) << endl;
-        return 1;
-    }
-
-    // IUnknown interface
-public:
-    HRESULT QueryInterface(const IID &riid, void **ppvObject){cout << "QueryInterface"; return 1;}
-    ULONG AddRef(){cout << "Added REF" << endl; return 1;}
-    ULONG Release(){cout << "Released" << endl; return 1;}
-};
-
 
 #endif // SAMPLEGRABBERCALLBACKCLASS_H

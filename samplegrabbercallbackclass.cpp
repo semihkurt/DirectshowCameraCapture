@@ -1,5 +1,10 @@
 #include "samplegrabbercallbackclass.h"
 
+SampleGrabberCallbackClass::SampleGrabberCallbackClass()
+{
+
+}
+
 SampleGrabberCallbackClass::SampleGrabberCallbackClass(DirectShowSampleGrabber *grabber)
     : m_ref(1)
     , m_grabber(grabber)
@@ -59,7 +64,7 @@ HRESULT SampleGrabberCallbackClass::SampleCB(double time, IMediaSample *mediaSam
 
 HRESULT SampleGrabberCallbackClass::BufferCB(double time, BYTE *buffer, long bufferLen)
 {
-    if (m_grabber) {
+    if (m_grabber) {        
         // Deep copy, the data might be modified or freed after the callback returns
         //            QByteArray data(reinterpret_cast<const char *>(buffer), bufferLen);
         //            Q_EMIT m_grabber->bufferAvailable(time, data);

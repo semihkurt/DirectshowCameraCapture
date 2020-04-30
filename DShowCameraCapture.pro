@@ -31,14 +31,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-    directshowsamplegrabber.cpp \
+    directshowcameracapture.cpp \
     main.cpp \
-    samplegrabbercallbackclass.cpp
+    samplegrabbercallback.cpp \
 
 HEADERS += \
-    directshowsamplegrabber.h \
+    directshowcameracapture.h \
     qedit.h \
-    samplegrabbercallbackclass.h
+    samplegrabbercallback.h \
 
 LIBS += -lgdi32 -ole32 -lstrmiids -loleaut32 -luser32
 
