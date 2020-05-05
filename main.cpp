@@ -7,7 +7,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     DirectShowCameraCapture* mDirectshow = new DirectShowCameraCapture;
-    mDirectshow->initialize(CaptureMode::ONLY_BUFFER);
+    mDirectshow->initialize(CaptureMode::BOTH);
 
     cout << "EXEC" << endl;
 

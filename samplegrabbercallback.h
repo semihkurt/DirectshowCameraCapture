@@ -4,6 +4,7 @@
 #include "qedit.h"
 #include <iostream>
 #include <string>
+#include <mutex>
 using namespace std;
 
 class SampleGrabberCallback : public ISampleGrabberCB
@@ -16,6 +17,8 @@ public:
     HRESULT QueryInterface(const IID &riid, void **ppvObject){cout << "QueryInterface"; return 1;}
     ULONG AddRef(){cout << "Added REF" << endl; return 1;}
     ULONG Release(){cout << "Released" << endl; return 1;}
+private:
+    ::std::mutex mMutex;
 };
 
 #endif // SAMPLEGRABBERCALLBACK_H
